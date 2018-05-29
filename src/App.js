@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { login } from "./actions/auth"
+import { ConnectedRouter } from "react-router-redux";
+import { history } from "./store";
 
 class App extends Component {
+
+  componentDidMount() {
+    console.log("mounted ?")
+  }
 
   render() {
     const { name, hasSuccess, login } = this.props;
     const obj = { name: "Matt", id: 1 }
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-          <button onClick={() => login(obj)}>hey</button>
-        </header>
-        <p className="App-intro">
-          {hasSuccess === true && name.name}
-        </p>
-      </div>
+        <ConnectedRouter history={history}>
+          <div className="App">
+            <header className="App-header">
+              <h1 className="App-title">Welcome to React</h1>
+              <button onClick={() => login(obj)}>hey</button>
+            </header>
+              <p className="App-intro">
+              {hasSuccess === true && name.name}
+              </p>
+          </div>
+        </ConnectedRouter>
     );
   }
 }
@@ -42,5 +48,6 @@ const mapDispatchToProps = dispatch => {
 };
 
  export default connect(mapStateToProps, mapDispatchToProps)(App);
+
 
  
