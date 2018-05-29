@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { login } from "./actions/auth"
+import { login, clearState } from "./actions/auth"
 import { ConnectedRouter } from "react-router-redux";
 import { history } from "./store";
 
@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   render() {
-    const { name, hasSuccess, login } = this.props;
+    const { name, hasSuccess, login, clearState } = this.props;
     const obj = { name: "Matt", id: 1 }
 
     return (
@@ -22,7 +22,8 @@ class App extends Component {
           <div className="App">
             <header className="App-header">
               <h1 className="App-title">Welcome to React</h1>
-              <button onClick={() => login(obj)}>hey</button>
+              <button onClick={() => login(obj)}>set</button>
+              <button onClick={() => clearState()}>clear</button>
             </header>
               <p className="App-intro">
               {hasSuccess === true && name.name}
@@ -42,7 +43,8 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      login
+      login,
+      clearState
     },
     dispatch
   );

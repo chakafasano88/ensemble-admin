@@ -8,4 +8,12 @@ export const login = string => {
       });
     };
   };
+
+export const clearState = () => {
+  return dispatch => {
+    dispatch({
+      type: types.LOGIN_CLEAR_SUCCESS,
+    });
+  };
+}
   

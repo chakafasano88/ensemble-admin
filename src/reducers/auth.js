@@ -15,8 +15,12 @@ const auth = (state = initialState, action) =>
 
     switch (action.type) {
         case types.LOGIN_TEST_SUCCESS:
-        draft.hasSuccess = true;
-        draft.name = action.payload;
+          draft.hasSuccess = true;
+          draft.name = action.payload;
+        break;
+        case types.LOGIN_CLEAR_SUCCESS:
+          draft.hasSuccess = true;
+          draft.name = {}
         break;
       default:      
         break;
