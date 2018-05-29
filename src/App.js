@@ -6,6 +6,7 @@ import { login } from "./actions/auth"
 import { ConnectedRouter } from "react-router-redux";
 import { history } from "./store";
 
+
 class App extends Component {
 
   componentDidMount() {
