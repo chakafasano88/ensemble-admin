@@ -5,7 +5,8 @@ import { bindActionCreators } from "redux";
 import { login, clearState } from "./actions/auth"
 import { ConnectedRouter } from "react-router-redux";
 import { history } from "./store";
-
+import LoginForm from "./components/login";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 class App extends Component {
 
@@ -18,18 +19,21 @@ class App extends Component {
     const obj = { name: "Matt", id: 1 }
 
     return (
+      <div>
         <ConnectedRouter history={history}>
           <div className="App">
-            <header className="App-header">
-              <h1 className="App-title">Welcome to React</h1>
-              <button onClick={() => login(obj)}>set</button>
-              <button onClick={() => clearState()}>clear</button>
-            </header>
-              <p className="App-intro">
-              {hasSuccess === true && name.name}
-              </p>
+            <Switch>
+              <Route
+                exact path="/"
+                render={() => (<div style={{ height: "100%" }}> <LoginForm /> </div> )}
+              />
+              {/* <Route path="/register" component={Register} />
+              <Route path="/forgot" component={Forgot} />
+              <Route path="/reset/:token" component={Reset} /> */}
+            </Switch>
           </div>
         </ConnectedRouter>
+        </div>
     );
   }
 }
