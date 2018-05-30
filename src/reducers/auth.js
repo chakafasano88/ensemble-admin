@@ -7,7 +7,7 @@ const initialState = {
   errorMessage: null,
   hasSuccess: false,
   successMessage: null,
-  name: {}
+  user: {}
 };
 
 const auth = (state = initialState, action) =>
@@ -16,11 +16,11 @@ const auth = (state = initialState, action) =>
     switch (action.type) {
         case types.LOGIN_TEST_SUCCESS:
           draft.hasSuccess = true;
-          draft.name = action.payload;
+          draft.user = action.payload;
         break;
         case types.LOGIN_CLEAR_SUCCESS:
           draft.hasSuccess = true;
-          draft.name = {}
+          draft.user = {}
         break;
       default:      
         break;
